@@ -1,0 +1,21 @@
+<% if flash[:errors] %>
+<h2>
+      <%= pluralize(@mission.errors.count, "error") %>
+      prohibited this student from being saved:
+</h2>
+  <% flash[:errors].each do |type, error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% end %>
+
+<h3>Mission Form</h3>
+
+<%= form_for @mission do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+
+Planet: <%= f.collection_select :planet_id, @planets, :id, :name %><br>
+
+Scientist: <%= f.collection_select :scientist_id, @scientists, :id, :name %>
+<%= f.submit %>
+<% end %>

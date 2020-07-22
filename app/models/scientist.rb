@@ -2,9 +2,8 @@ class Scientist < ApplicationRecord
     has_many :missions, dependent: :destroy
     has_many :planets, through: :missions
     accepts_nested_attributes_for :planets
+    validates :name, presence: true
+    validates :field_of_study, presence: true
+    validates :name, uniqueness: true
 
-    # def planet_atttributes=(hash) 
-    #     planet = Planet.create(hash)
-    #     mission = Mission.create(planet: planet, scientist: self)
-    # end
 end

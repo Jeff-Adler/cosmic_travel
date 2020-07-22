@@ -1,4 +1,10 @@
-<%= form_with(model: planet, local: true) do |form| %>
+<% if flash[:notice] %>
+  <% flash[:notice].each do |type, error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% end %>
+
+%= form_with(model: planet, local: true) do |form| %>
   <% if planet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(planet.errors.count, "error") %> prohibited this planet from being saved:</h2>
