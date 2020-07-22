@@ -1,0 +1,18 @@
+Name: <%= @scientist.name %><br>
+
+Field of Study: <%= @scientist.field_of_study %><br>
+
+Mssions:<br>
+
+<% @missions.each do |mission| %>
+    <%= link_to mission.name, mission_path(mission) %> <br>
+<% end %>
+
+
+Planets:<br>
+
+<% @planets.each do |planet| %>
+    <%= link_to planet.name, planet_path(planet) %> <br>
+<% end %>
+
+<%= button_to "Delete Scientist", scientist_path(@scientist), :method => 'delete' %>

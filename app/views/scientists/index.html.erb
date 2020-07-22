@@ -1,0 +1,7 @@
+<h3>Scientists</h3>
+
+<% @scientists.each do |scientist| %>
+
+    <%= link_to scientist.name, scientist_path(scientist) %><br>
+
+<% end %>
