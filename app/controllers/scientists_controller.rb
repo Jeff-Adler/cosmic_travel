@@ -7,6 +7,7 @@ class ScientistsController < ApplicationController
 
     def new 
         @scientist = Scientist.new
+        # byebug
     end
 
     def create 
@@ -16,7 +17,8 @@ class ScientistsController < ApplicationController
         if @scientist.valid?
             redirect_to scientist_path(@scientist)
         else
-            redirect_to new_scientist_path, notice:@scientist.errors.full_messages
+            #flash[:form_errors] = @scientist.errors.full_messages            
+            redirect_to new_scientist_path, form_errors: @scientist.errors.full_messages
         end
 
     end
@@ -34,7 +36,7 @@ class ScientistsController < ApplicationController
         if @scientist.update(scientist_params)
             redirect_to scientist_path(@scientist)
         else
-            redirect_to edit_scientist_path, notice:@scientist.errors.full_messages
+            redirect_to edit_scientist_path, flash[:form_errors] = @scientist.errors.full_messages
         end
     end
 

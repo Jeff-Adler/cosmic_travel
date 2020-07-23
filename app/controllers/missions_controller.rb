@@ -19,8 +19,7 @@ class MissionsController < ApplicationController
         if @mission.valid?
             redirect_to scientist_path(@mission.scientist.id)
         else
-            flash[:errors] = @mission.errors.full_messages
-            redirect_to new_mission_path
+            redirect_to new_mission_path, form_errors: @mission.errors.full_messages
         end
 
     end

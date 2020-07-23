@@ -1,3 +1,10 @@
+<% if flash[:form_errors] %>
+<% # Flash can produce nested error messages, if you just do flash.each do |type, error_msg| %>
+  <% flash[:form_errors].each do |error_msg| %>
+    <p><%= error_msg %></p>
+  <% end %>
+<% end %>
+
 <%= form_for @scientist do |t| %>
     <%= t.label :name %>
     <%= t.text_field :name %><br>
