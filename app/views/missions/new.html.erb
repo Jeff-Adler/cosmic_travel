@@ -1,12 +1,10 @@
-<% if flash[:errors] %>
-<h2>
-      <%= pluralize(@mission.errors.count, "error") %>
-      prohibited this student from being saved:
-</h2>
-  <% flash[:errors].each do |type, error_msg| %>
+<% if flash[:form_errors] %>
+<% # Flash can produce nested error messages, if you just do flash.each do |type, error_msg| %>
+  <% flash[:form_errors].each do |error_msg| %>
     <p><%= error_msg %></p>
   <% end %>
 <% end %>
+
 
 <h3>Mission Form</h3>
 
